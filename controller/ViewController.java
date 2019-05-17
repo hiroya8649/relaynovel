@@ -10,7 +10,7 @@ public class ViewController {
   public static ViewController getInstance() { return instance; }
 
   public void start() {
-    View view = new StartView();
+    View view = new MainMenuView();
     view.show();
   }
 
