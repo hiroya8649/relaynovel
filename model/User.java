@@ -3,7 +3,7 @@ package relaynovel.model;
 import java.util.Date;
 
 public class User {
-  public Integer id = null;
+  public Integer userId = null;
   public String name = null;
   public String password = null;
   public Date birthday = null;
@@ -11,8 +11,8 @@ public class User {
 
   public User() {}
 
-  public User(Integer id, String name, String password, Date birthday, Integer gender) {
-    this.id = id;
+  public User(Integer userId, String name, String password, Date birthday, Integer gender) {
+    this.userId = userId;
     this.name = name;
     this.password = password;
     this.birthday = birthday;
@@ -20,6 +20,6 @@ public class User {
   }
 
   public boolean isNotNull() {
-    return this.id != null;
+    return this.userId != null;
   }
 }

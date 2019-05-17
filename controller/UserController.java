@@ -34,8 +34,8 @@ public class UserController {
     return false;
   }
 
-  public User getById(int id) {
-    String query = "SELECT * from user where id = " + id;
+  public User getById(int userId) {
+    String query = "SELECT * from user where user_id = " + id;
     try {
       ResultSet rs = DBAdapter.getInstance().sendQuery(query);
       User user;
@@ -82,8 +82,8 @@ public class UserController {
     return new User();
   }
 
-  public User login(String username, String password) {
-    String query = "select * from user where username = '" + username + "' and password = '" + password + "'";
+  public User login(String name, String password) {
+    String query = "select * from user where name = '" + username + "' and password = '" + password + "'";
     try {
       ResultSet rs = DBAdapter.getInstance().sendQuery(query);
       User user;
