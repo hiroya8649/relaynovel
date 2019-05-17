@@ -22,6 +22,11 @@ public class RegisterView extends View {
 
     System.out.print("ユーザー名: ");
     String username = scanner.nextLine();
+    while(UserController.getInstance().getByName(username).isNotNull()) {
+      System.out.println("ユーザー名は既に使われています。");
+      System.out.print("ユーザー名: ");
+      username = scanner.nextLine();
+    }
     System.out.print("パスワード: ");
     String password = scanner.nextLine();
 

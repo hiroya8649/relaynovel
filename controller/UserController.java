@@ -58,6 +58,30 @@ public class UserController {
     return new User();
   }
 
+  public User getByName(String name) {
+    String query = "SELECT * from user where name = '" + name + "'";
+    try {
+      ResultSet rs = DBAdapter.getInstance().sendQuery(query);
+      User user;
+      if (rs.next()) {
+        user = new User(
+          rs.getInt("user_id"),
+          rs.getString("name"),
+          rs.getString("password"),
+          rs.getDate("birthday"),
+          rs.getInt("gender")
+        );
+      } else {
+        user = new User();
+      }
+      DBAdapter.getInstance().closeStatement();
+      return user;
+    } catch (SQLException se) {
+      se.printStackTrace();
+    }
+    return new User();
+  }
+
   public User login(String username, String password) {
     String query = "select * from user where username = " + username + "and password = " + password;
     try {
