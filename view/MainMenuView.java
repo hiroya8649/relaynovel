@@ -14,7 +14,8 @@ public class MainMenuView extends View {
 
   public void main() {
     Scanner scanner = new Scanner(System.in);
-    while (true) {
+    boolean inputIsValid = true;
+    do {
       System.out.print("> ");
       String inputString = scanner.nextLine();
       View view;
@@ -28,12 +29,12 @@ public class MainMenuView extends View {
             ViewController.getInstance().switchView(view);
           break;
         case "E":
-            System.exit(0);
           break;
         default:
             System.out.println("無効なインプット");
+            inputIsValid = false;
           break;
       }
-    }
+    } while (!inputIsValid);
   }
 }
