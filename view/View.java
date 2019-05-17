@@ -7,11 +7,7 @@ public abstract class View {
   protected String message = "";
   protected String inputDescription = "";
 
-  protected ViewController viewController;
-
-  public View(ViewController viewController) {
-    this.viewController = viewController;
-  }
+  public View() {}
 
   public void show() {
     this.clearScreen();

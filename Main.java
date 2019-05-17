@@ -5,8 +5,7 @@ import relaynovel.util.DBAdapter;
 
 public class Main {
   public static void main(String[] args) {
-    ViewController viewController = new ViewController();
-    viewController.start();
+    ViewController.getInstance().start();
     DBAdapter.getInstance().closeConnection();
   }
 }

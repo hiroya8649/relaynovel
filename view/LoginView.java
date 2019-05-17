@@ -5,8 +5,8 @@ import java.util.Scanner;
 import relaynovel.controller.ViewController;
 
 public class LoginView extends View {
-  public LoginView(ViewController viewController) {
-    super(viewController);
+  public LoginView() {
+    super();
     this.title = "ログイン";
     this.message = "ユーザー名とパスワードを入力してください";
   }
@@ -18,7 +18,7 @@ public class LoginView extends View {
     System.out.print("パスワード: ");
     inputString = scanner.nextLine();
 
-    View view = new MainMenuView(this.viewController);
-    this.viewController.switchView(view);
+    View view = new MainMenuView();
+    ViewController.getInstance().switchView(view);
   }
 }

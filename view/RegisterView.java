@@ -10,8 +10,8 @@ import relaynovel.controller.ViewController;
 import relaynovel.model.User;
 
 public class RegisterView extends View {
-  public RegisterView(ViewController viewController) {
-    super(viewController);
+  public RegisterView() {
+    super();
     this.title = "ユーザー登録";
     this.message = "資料を入力してください";
   }
@@ -41,13 +41,12 @@ public class RegisterView extends View {
     while ( !genderStr.equals("0") && !genderStr.equals("1")) {
       System.out.print("性別 (1: 男性, 0: 女性): ");
       genderStr = scanner.nextLine();
-      System.out.println(genderStr);
     }
 
     User user = new User(null, username, password, birthday, Integer.parseInt(genderStr));
     UserController.getInstance().insert(user);
 
-    View view = new LoginView(this.viewController);
-    this.viewController.switchView(view);
+    View view = new LoginView();
+    ViewController.getInstance().switchView(view);
   }
 }

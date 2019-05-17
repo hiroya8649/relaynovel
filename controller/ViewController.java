@@ -3,10 +3,14 @@ package relaynovel.controller;
 import relaynovel.view.*;
 
 public class ViewController {
-  public ViewController() {}
+  private final static ViewController instance = new ViewController();
+
+  private ViewController() {}
+
+  public static ViewController getInstance() { return instance; }
 
   public void start() {
-    View view = new StartView(this);
+    View view = new StartView();
     view.show();
   }
 

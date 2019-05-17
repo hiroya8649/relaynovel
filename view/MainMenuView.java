@@ -5,8 +5,8 @@ import java.util.Scanner;
 import relaynovel.controller.ViewController;
 
 public class MainMenuView extends View {
-  public MainMenuView(ViewController viewController) {
-    super(viewController);
+  public MainMenuView() {
+    super();
     this.title = "メニュー";
     this.message = "操作を選択して下さい";
     this.inputDescription = "N: 小説一覧\nE: 終了";
@@ -20,8 +20,8 @@ public class MainMenuView extends View {
       View view;
       switch (inputString) {
         case "N":
-            view = new LoginView(this.viewController);
-            this.viewController.switchView(view);
+            view = new LoginView();
+            ViewController.getInstance().switchView(view);
           break;
         case "E":
             System.exit(0);
