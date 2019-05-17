@@ -8,7 +8,7 @@ import relaynovel.util.DBAdapter;
 import relaynovel.model.User;
 
 public class UserController {
-  public final static UserController instance = new UserController();
+  private final static UserController instance = new UserController();
 
   private UserController() {}
 
