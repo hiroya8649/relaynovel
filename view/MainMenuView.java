@@ -14,8 +14,9 @@ public class MainMenuView extends View {
 
   public void main() {
     Scanner scanner = new Scanner(System.in);
-    boolean inputIsValid = true;
+    boolean inputIsValid;
     do {
+      inputIsValid = true;
       System.out.print("> ");
       String inputString = scanner.nextLine();
       View view;
