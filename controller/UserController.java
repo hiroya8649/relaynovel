@@ -16,6 +16,7 @@ public class UserController {
     return instance;
   }
 
+  // 成功すればtrue
   public boolean insert(User user) {
     String query = "INSERT INTO user (name, password, birthday, gender) values(?,?,?,?)";
     try {
@@ -40,7 +41,31 @@ public class UserController {
       User user;
       if (rs.next()) {
         user = new User(
-          rs.getInt("id"),
+          rs.getInt("user_id"),
+          rs.getString("name"),
+          rs.getString("password"),
+          rs.getDate("birthday"),
+          rs.getInt("gender")
+        );
+      } else {
+        user = new User();
+      }
+      DBAdapter.getInstance().closeStatement();
+      return user;
+    } catch (SQLException se) {
+      se.printStackTrace();
+    }
+    return new User();
+  }
+
+  public User login(String username, String password) {
+    String query = "select * from user where username = " + username + "and password = " + password;
+    try {
+      ResultSet rs = DBAdapter.getInstance().sendQuery(query);
+      User user;
+      if (rs.next()) {
+        user = new User(
+          rs.getInt("user_id"),
           rs.getString("name"),
           rs.getString("password"),
           rs.getDate("birthday"),
@@ -63,7 +88,7 @@ public class UserController {
       ResultSet rs = DBAdapter.getInstance().getAll("user");
       while(rs.next()) {
         users.add(new User(
-          rs.getInt("id"),
+          rs.getInt("user_id"),
           rs.getString("name"),
           rs.getString("password"),
           rs.getDate("birthday"),
