@@ -83,7 +83,7 @@ public class UserController {
   }
 
   public User login(String username, String password) {
-    String query = "select * from user where username = " + username + "and password = " + password;
+    String query = "select * from user where username = '" + username + "' and password = '" + password + "'";
     try {
       ResultSet rs = DBAdapter.getInstance().sendQuery(query);
       User user;
