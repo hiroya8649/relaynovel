@@ -35,18 +35,12 @@ public class UserController {
   }
 
   public User getById(int userId) {
-    String query = "SELECT * from user where user_id = " + id;
+    String query = "SELECT * from user where user_id = " + userId;
     try {
       ResultSet rs = DBAdapter.getInstance().sendQuery(query);
       User user;
       if (rs.next()) {
-        user = new User(
-          rs.getInt("user_id"),
-          rs.getString("name"),
-          rs.getString("password"),
-          rs.getDate("birthday"),
-          rs.getInt("gender")
-        );
+        user = new User(rs);
       } else {
         user = new User();
       }
@@ -64,13 +58,7 @@ public class UserController {
       ResultSet rs = DBAdapter.getInstance().sendQuery(query);
       User user;
       if (rs.next()) {
-        user = new User(
-          rs.getInt("user_id"),
-          rs.getString("name"),
-          rs.getString("password"),
-          rs.getDate("birthday"),
-          rs.getInt("gender")
-        );
+        user = new User(rs);
       } else {
         user = new User();
       }
@@ -83,18 +71,12 @@ public class UserController {
   }
 
   public User login(String name, String password) {
-    String query = "select * from user where name = '" + username + "' and password = '" + password + "'";
+    String query = "select * from user where name = '" + name + "' and password = '" + password + "'";
     try {
       ResultSet rs = DBAdapter.getInstance().sendQuery(query);
       User user;
       if (rs.next()) {
-        user = new User(
-          rs.getInt("user_id"),
-          rs.getString("name"),
-          rs.getString("password"),
-          rs.getDate("birthday"),
-          rs.getInt("gender")
-        );
+        user = new User(rs);
       } else {
         user = new User();
       }
@@ -111,13 +93,7 @@ public class UserController {
     try {
       ResultSet rs = DBAdapter.getInstance().getAll("user");
       while(rs.next()) {
-        users.add(new User(
-          rs.getInt("user_id"),
-          rs.getString("name"),
-          rs.getString("password"),
-          rs.getDate("birthday"),
-          rs.getInt("gender")
-        ));
+        users.add(new User(rs));
       }
       DBAdapter.getInstance().closeStatement();
     }

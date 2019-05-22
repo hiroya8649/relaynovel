@@ -1,5 +1,7 @@
 package relaynovel.model;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.Date;
 
 public class User {
@@ -17,6 +19,19 @@ public class User {
     this.password = password;
     this.birthday = birthday;
     this.gender = gender;
+  }
+
+  public User(ResultSet rs) {
+    try {
+      this.userId = rs.getInt("user_id");
+      this.name = rs.getString("name");
+      this.password = rs.getString("password");
+      this.birthday = rs.getDate("birthday");
+      this.gender = rs.getInt("gender");
+    } catch(SQLException se) {
+      System.out.println("ResultSetからUserの変換にエラーが発生しました。");
+      se.printStackTrace();
+    }
   }
 
   public boolean isNotNull() {
