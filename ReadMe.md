@@ -23,7 +23,7 @@ java -cp ..:mysql-connector-java-8.0.15.jar relaynovel.Main
 Main.javaの一行目のpackage relaynovel;を消してからコンパイルしてください。
 - コンパイル
 ```
-javac -cp -encodeing UTF-8 -cp .;mysql-connector-java-8.0.15.jar; *.java
+javac -encodeing UTF-8 -cp .;mysql-connector-java-8.0.15.jar; *.java
 ```
 - 実行
 ```
