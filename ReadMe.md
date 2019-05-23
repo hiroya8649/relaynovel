@@ -17,6 +17,7 @@ java -cp ..:mysql-connector-java-8.0.15.jar relaynovel.Main
 ```
 
 - Windows
+
 まずはMain.javaとmysql-connector-java-8.0.15.jarをフォルダー取り出して、
 フォルダーをrelaynovelにリネームして、
 Main.javaの一行目のpackage relaynovel;を消してからコンパイルしてください。
