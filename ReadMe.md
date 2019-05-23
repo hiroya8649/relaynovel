@@ -1,6 +1,7 @@
 relaynovel
 ===
 # Terminal指令集
+- Mac
 - 前回コンパイル済みのclassファイルを削除(MAC OSX用、 WINDOWSは要確認)
   - しないとCodeを更新しても上書きされない場合あり、必ず実行してからコンパイル
 ```
@@ -13,6 +14,19 @@ javac -cp ..:mysql-connector-java-8.0.15.jar *.java
 - 実行
 ```
 java -cp ..:mysql-connector-java-8.0.15.jar relaynovel.Main
+```
+
+- Windows
+まずはMain.javaとmysql-connector-java-8.0.15.jarをフォルダー取り出して、
+フォルダーをrelaynovelにリネームして、
+Main.javaの一行目のpackage relaynovel;を消してからコンパイルしてください。
+- コンパイル
+```
+javac -cp -encodeing UTF-8 -cp .;mysql-connector-java-8.0.15.jar; *.java
+```
+- 実行
+```
+java -cp .;mysql-connector-java-8.0.15.jar; Main
 ```
 
 # MySQL
