@@ -1,0 +1,113 @@
+@startuml
+
+class DBAdapter {
+  DBAdapter instance
+  Connection con
+  Statement stm
+  ResultSet getAll(String)
+  ResultSet sendQuery(String)
+  PreparedStatement setPreparedStatement(String)
+  void closeConnection()
+  void closeStatement()
+}
+
+class Main {
+  void main()
+}
+
+class User {
+  Integer userId
+  String name
+  String password
+  Date birthday
+  Integer gender
+}
+
+class Novel {
+
+}
+
+class Text {
+
+}
+
+class ReviewText {
+
+}
+
+class ReviewNovel {
+
+}
+
+class View {
+  String title
+  String message
+  String inputDescription
+  void show()
+  abstract void main()
+}
+
+class RegisterView {
+  void main()
+}
+
+class MainMenuView {
+  void main()
+}
+
+class LoginView {
+  void main()
+}
+
+class ViewController {
+  ViewController instance
+  View viewNow
+  View viewNext
+  ViewController getInstance()
+  void run()
+  void switchView(View)
+}
+
+class UserController {
+  UserController instance
+  UserController getInstance()
+  boolean insert(User)
+  User getById(int)
+  User getByName(String)
+  User login(User)
+}
+
+Text -- View
+User -- View
+Novel -- View
+ReviewText -- View
+ReviewNovel -- View
+Main -- ViewController
+ViewController -- View
+
+UserController -- View
+UserController - User
+UserController -up- DBAdapter
+
+NovelController -- View
+NovelController - Novel
+NovelController -up- DBAdapter
+
+TextController -- View
+TextController - Text
+TextController -up- DBAdapter
+
+ReviewTextController -- View
+ReviewTextController - ReviewText
+ReviewTextController -up- DBAdapter
+
+ReviewNovelController -- View
+ReviewNovelController - ReviewNovel
+ReviewNovelController -up- DBAdapter
+
+
+View <|-- RegisterView
+View <|-- LoginView
+View <|-- MainMenuView
+
+@enduml

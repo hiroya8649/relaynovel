@@ -40,3 +40,8 @@ create table review_novel(review_novel_id int auto_increment not null primary ke
 create table review_text(review_text int auto_increment not null primary key, user_id int not null, text_id int not null, text text not null, score int not null, date datetime not null);
 ```
 - ここまでこればコンパイルして実行可能です。
+- CSVロード
+  - 表とファイル名を自分のものに変更する必要あり
+```sql
+load data local infile "~/Downloads/text.csv" into table text fields terminated by ',' lines terminated by '\r\n' ignore 1 rows;
+```
