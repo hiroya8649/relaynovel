@@ -1,5 +1,8 @@
 relaynovel
 ===
+# Class Diagram
+
+![](https://github.com/hiroya8649/relaynovel/blob/master/Class.png?raw=true)
 # Terminal指令集
 ## Mac
 - 前回コンパイル済みのclassファイルを削除(MAC OSX用、 WINDOWSは要確認)
