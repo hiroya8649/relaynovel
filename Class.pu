@@ -1,6 +1,13 @@
 @startuml
 
-class DBAdapter {
+left to right direction
+
+!define model #FCC9B9
+!define controller #FFC28B
+!define view #7DACCE
+!define viewCenter #9DCCEE
+
+class DBAdapter #FBF6F7 {
   - constructor()
   - DBAdapter instance
   - Connection con
@@ -16,7 +23,7 @@ class Main {
   + void main()
 }
 
-class User {
+class User model {
   + Integer userId
   + String name
   + String password
@@ -26,7 +33,7 @@ class User {
   + constructor(ResultSet)
 }
 
-class Novel {
+class Novel model {
   + Integer novelId
   + Integer userId   
   + String title
@@ -35,7 +42,7 @@ class Novel {
   + constructor(ResultSet)
 }
 
-class Text {
+class Text model {
   + Integer textId
   + Integer novelId
   + Integer userId
@@ -45,7 +52,7 @@ class Text {
   + constructor(ResultSet)
 }
 
-class ReviewText {
+class ReviewText model {
   + Integer reviewTextId
   + Integer userId
   + Integer textId
@@ -56,7 +63,7 @@ class ReviewText {
   + constructor(ResultSet)
 }
 
-class ReviewNovel {
+class ReviewNovel model {
   + Integer reviewNovelId
   + Integer userId
   + Integer textId
@@ -67,7 +74,7 @@ class ReviewNovel {
   + constructor(ResultSet)
 }
 
-class View {
+class View viewCenter {
   # String title
   # String message
   # String inputDescription
@@ -77,47 +84,47 @@ class View {
   + abstract void main()
 }
 
-class RegisterView {
+class RegisterView view {
   + constructor()
   + void main()
 }
 
-class MainMenuView {
+class MainMenuView view {
   + constructor()
   + void main()
 }
 
-class NovelListView {
+class NovelListView view {
   + constructor()
   + void main()
 }
 
-class NovelView {
+class NovelView view {
   + constructor()
   + void main()
 }
 
-class ReviewNovelView {
+class ReviewNovelView view {
   + constructor()
   + void main()
 }
 
-class TextDetailView {
+class TextDetailView view {
   + constructor()
   + void main()
 }
 
-class NovelWriterView {
+class NovelWriterView view {
   + constructor()
   + void main()
 }
 
-class LoginView {
+class LoginView view {
   + constructor()
   + void main()
 }
 
-class ViewController {
+class ViewController viewCenter {
   - ViewController instance
   - View viewNow
   - View viewNext
@@ -127,7 +134,7 @@ class ViewController {
   + void switchView(View)
 }
 
-class UserController {
+class UserController controller {
   - constructor()
   - UserController instance
   + UserController getInstance()
@@ -138,7 +145,7 @@ class UserController {
   + ArrayList<User> getAll()
 }
 
-class NovelController {
+class NovelController controller {
   - constructor()
   - NovelController instance
   + NovelController getInstance()
@@ -148,7 +155,7 @@ class NovelController {
   + ArrayList<Text> getTexts(int, int, int)
 }
 
-class TextController {
+class TextController controller {
   - constructor()
   - TextController instance
   + TextController getInstance()
@@ -156,7 +163,7 @@ class TextController {
   + ArrayList<Text> getAll()
 }
 
-class ReviewNovelController {
+class ReviewNovelController controller {
   - constructor()
   - ReviewNovelController instance
   + ReviewNovelController getInstance()
@@ -165,7 +172,7 @@ class ReviewNovelController {
   + ArrayList<ReviewNovel> reviews(int, int, int)
 }
 
-class ReviewTextController {
+class ReviewTextController controller {
   - constructor()
   - ReviewTextController instance
   + ReviewTextController getInstance()
@@ -182,34 +189,34 @@ class ReviewTextController {
 Main -- ViewController
 ViewController -- View
 
-UserController -- View
+UserController -up- View
 UserController - User
-UserController -up- DBAdapter
+UserController -down- DBAdapter
 
-NovelController -- View
+NovelController -up- View
 NovelController - Novel
-NovelController -up- DBAdapter
+NovelController -down- DBAdapter
 
-TextController -- View
+TextController -up- View
 TextController - Text
-TextController -up- DBAdapter
+TextController -down- DBAdapter
 
-ReviewTextController -- View
+ReviewTextController -up- View
 ReviewTextController - ReviewText
-ReviewTextController -up- DBAdapter
+ReviewTextController -down- DBAdapter
 
-ReviewNovelController -- View
+ReviewNovelController -up- View
 ReviewNovelController - ReviewNovel
-ReviewNovelController -up- DBAdapter
+ReviewNovelController -down- DBAdapter
 
 
-View <|-- RegisterView
-View <|-- LoginView
-View <|-- MainMenuView
-View <|-- NovelListView
-View <|-- NovelView
-View <|-- NovelWriterView
-View <|-- ReviewNovelView
-View <|-- TextDetailView
+View <|-left- RegisterView
+View <|-left- LoginView
+View <|-left- MainMenuView
+View <|-left- NovelListView
+View <|-right- NovelView
+View <|-right- NovelWriterView
+View <|-right- ReviewNovelView
+View <|-right- TextDetailView
 
 @enduml
