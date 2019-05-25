@@ -1,87 +1,184 @@
 @startuml
 
 class DBAdapter {
-  DBAdapter instance
-  Connection con
-  Statement stm
-  ResultSet getAll(String)
-  ResultSet sendQuery(String)
-  PreparedStatement setPreparedStatement(String)
-  void closeConnection()
-  void closeStatement()
+  - constructor()
+  - DBAdapter instance
+  - Connection con
+  - Statement stm
+  + ResultSet getAll(String)
+  + ResultSet sendQuery(String)
+  + PreparedStatement setPreparedStatement(String)
+  + void closeConnection()
+  + void closeStatement()
 }
 
 class Main {
-  void main()
+  + void main()
 }
 
 class User {
-  Integer userId
-  String name
-  String password
-  Date birthday
-  Integer gender
+  + Integer userId
+  + String name
+  + String password
+  + Date birthday
+  + Integer gender
+  + constructor(Integer, String, String, Date, Integer)
+  + constructor(ResultSet)
 }
 
 class Novel {
-
+  + Integer novelId
+  + Integer userId   
+  + String title
+  + Timestamp date
+  + constructor(Integer, Integer, String, Timestamp)
+  + constructor(ResultSet)
 }
 
 class Text {
-
+  + Integer textId
+  + Integer novelId
+  + Integer userId
+  + String text
+  + Timestamp date
+  + constructor(Integer, Integer, Integer, String, Timestamp)
+  + constructor(ResultSet)
 }
 
 class ReviewText {
-
+  + Integer reviewTextId
+  + Integer userId
+  + Integer textId
+  + String text
+  + Integer score
+  + Timestamp date
+  + constructor(Integer, Integer, Integer, String, Integer, Timestamp)
+  + constructor(ResultSet)
 }
 
 class ReviewNovel {
-
+  + Integer reviewNovelId
+  + Integer userId
+  + Integer textId
+  + String text
+  + Integer score
+  + Timestamp date
+  + constructor(Integer, Integer, Integer, String, Integer, Timestamp)
+  + constructor(ResultSet)
 }
 
 class View {
-  String title
-  String message
-  String inputDescription
-  void show()
-  abstract void main()
+  # String title
+  # String message
+  # String inputDescription
+  - void clearScreen()
+  + constructor()
+  + void show()
+  + abstract void main()
 }
 
 class RegisterView {
-  void main()
+  + constructor()
+  + void main()
 }
 
 class MainMenuView {
-  void main()
+  + constructor()
+  + void main()
+}
+
+class NovelListView {
+  + constructor()
+  + void main()
+}
+
+class NovelView {
+  + constructor()
+  + void main()
+}
+
+class ReviewNovelView {
+  + constructor()
+  + void main()
+}
+
+class TextDetailView {
+  + constructor()
+  + void main()
+}
+
+class NovelWriterView {
+  + constructor()
+  + void main()
 }
 
 class LoginView {
-  void main()
+  + constructor()
+  + void main()
 }
 
 class ViewController {
-  ViewController instance
-  View viewNow
-  View viewNext
-  ViewController getInstance()
-  void run()
-  void switchView(View)
+  - ViewController instance
+  - View viewNow
+  - View viewNext
+  - constructor()
+  + ViewController getInstance()
+  + void run()
+  + void switchView(View)
 }
 
 class UserController {
-  UserController instance
-  UserController getInstance()
-  boolean insert(User)
-  User getById(int)
-  User getByName(String)
-  User login(User)
+  - constructor()
+  - UserController instance
+  + UserController getInstance()
+  + boolean insert(User)
+  + User getById(int)
+  + User getByName(String)
+  + User login(User)
+  + ArrayList<User> getAll()
 }
 
-Text -- View
-User -- View
-Novel -- View
-ReviewText -- View
-ReviewNovel -- View
+class NovelController {
+  - constructor()
+  - NovelController instance
+  + NovelController getInstance()
+  + boolean insert(Novel)
+  + ArrayList<Novel> getAll()
+  + ArrayList<Novel> getNovels(int, int)
+  + ArrayList<Text> getTexts(int, int, int)
+}
+
+class TextController {
+  - constructor()
+  - TextController instance
+  + TextController getInstance()
+  + boolean insert(Text)
+  + ArrayList<Text> getAll()
+}
+
+class ReviewNovelController {
+  - constructor()
+  - ReviewNovelController instance
+  + ReviewNovelController getInstance()
+  + boolean insert(ReviewNovel)
+  + ReviewNovel getById(int)
+  + ArrayList<ReviewNovel> reviews(int, int, int)
+}
+
+class ReviewTextController {
+  - constructor()
+  - ReviewTextController instance
+  + ReviewTextController getInstance()
+  + boolean insert(ReviewText)
+  + ReviewText getById(int)
+  + ArrayList<ReviewText> reviews(int, int, int)
+}
+
+' Text -- View
+' User -- View
+' Novel -- View
+' ReviewText -- View
+' ReviewNovel -- View
 Main -- ViewController
 ViewController -- View
 
@@ -109,5 +206,10 @@ ReviewNovelController -up- DBAdapter
 View <|-- RegisterView
 View <|-- LoginView
 View <|-- MainMenuView
+View <|-- NovelListView
+View <|-- NovelView
+View <|-- NovelWriterView
+View <|-- ReviewNovelView
+View <|-- TextDetailView
 
 @enduml
