@@ -1,5 +1,8 @@
 relaynovel
 ===
+# Class Diagram
+
+![](https://github.com/hiroya8649/relaynovel/blob/master/Class.png?raw=true)
 # Terminal指令集
 ## Mac
 - 前回コンパイル済みのclassファイルを削除(MAC OSX用、 WINDOWSは要確認)
@@ -52,7 +55,7 @@ create table text(text_id int auto_increment not null primary key, novel_id int 
 
 create table review_novel(review_novel_id int auto_increment not null primary key, user_id int not null, novel_id int not null, text text not null, score int not null, date datetime not null);
 
-create table review_text(review_text int auto_increment not null primary key, user_id int not null, text_id int not null, text text not null, score int not null, date datetime not null);
+create table review_text(review_text_id int auto_increment not null primary key, user_id int not null, text_id int not null, text text not null, score int not null, date datetime not null);
 ```
 - ここまでこればコンパイルして実行可能です。
 - CSVロード
