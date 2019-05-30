@@ -13,6 +13,7 @@ public class UserController {
   private UserController() {}
 
   public static UserController getInstance() {
+    int i = 0;
     return instance;
   }
 
