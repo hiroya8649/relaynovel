@@ -1,0 +1,25 @@
+-encoding utf-8 
+-cp .;mysql-connector-java-8.0.15.jar;
+-d class
+Main.java
+relaynovel/view/LoginView.java
+relaynovel/view/MainMenuView.java
+relaynovel/view/NovelListView.java
+relaynovel/view/NovelView.java
+relaynovel/view/RegisterView.java
+relaynovel/view/ReviewNovelView.java
+relaynovel/view/TextDetailView.java
+relaynovel/view/JoinedUserListView.java
+relaynovel/view/View.java
+relaynovel/util/DBAdapter.java
+relaynovel/model/Novel.java
+relaynovel/model/ReviewNovel.java
+relaynovel/model/ReviewText.java
+relaynovel/model/Text.java
+relaynovel/model/User.java
+relaynovel/controller/NovelController.java
+relaynovel/controller/ReviewNovelController.java
+relaynovel/controller/ReviewTextController.java
+relaynovel/controller/TextController.java
+relaynovel/controller/UserController.java
+relaynovel/controller/ViewController.java

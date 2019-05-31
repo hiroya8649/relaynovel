@@ -2,12 +2,19 @@ package relaynovel.util;
 
 import java.sql.*;
 
+/**
+* DBAdapter is to handle the connection and statement to database.
+* @author  Chang
+*/
 public class DBAdapter {
   private static final DBAdapter instance = new DBAdapter();
   private Connection con = null;
   private Statement stm = null;
 
-  // DBとのConnectionを立てる
+  /**
+  * constructor, setup the connection to database.
+  * @author  Chang
+  */
   private DBAdapter() {
     try {
       this.con = DriverManager.getConnection(
@@ -22,16 +29,29 @@ public class DBAdapter {
     }
   };
 
+  /**
+  * This method is for singleton.
+  * @return DBAdapter
+  */
   public static DBAdapter getInstance() {
     return instance;
   }
 
+  /**
+  * This method will return ResultSet which is all data in a specified table.
+  * @param tableName The name of the table.
+  * @return ResultSet
+  */
   public ResultSet getAll(String tableName) {
     String query = "SELECT * from " + tableName;
     return sendQuery(query);
   }
 
-  // DBに資料を取得する
+  /**
+  * This method will execute a query and return ResultSet.
+  * @param query The specified query.
+  * @return ResultSet
+  */
   public ResultSet sendQuery(String query) {
     this.stm = null;
     ResultSet rs = null;
@@ -49,8 +69,11 @@ public class DBAdapter {
     return rs;
   }
 
-  // INSERTを実行するためのPreparedStatementを用意する
-  // queryExample = "INSERT INTO course (course_code, course_desc, course_chair) VALUES (?, ?, ?)";
+  /**
+  * This method return a PreparedStatement (for doing insert) with the specified query.
+  * @param query The specified query.
+  * @return PreparedStatement
+  */
   public PreparedStatement setPreparedStatement(String query) {
     try  {
       return con.prepareStatement(query);
@@ -61,6 +84,9 @@ public class DBAdapter {
     return null;
   }
 
+  /**
+  * This method is to close the connection to database.
+  */
   public void closeConnection() {
     if (this.con != null) {
       try {
@@ -73,6 +99,9 @@ public class DBAdapter {
     }
   }
 
+  /**
+  * This method is to close the statement to connection.
+  */
   public void closeStatement() {
     if (this.stm != null) {
       try {

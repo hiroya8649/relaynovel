@@ -4,6 +4,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Date;
 
+/**
+* User is the protocol between controller and view.
+* @author  Chang
+*/
 public class User {
   public Integer userId = null;
   public String name = null;
@@ -13,6 +17,15 @@ public class User {
 
   public User() {}
 
+  /**
+  * Initialize the User.
+  * @param userId
+  * @param name
+  * @param password
+  * @param birthday
+  * @param gender
+  * @return User
+  */
   public User(Integer userId, String name, String password, Date birthday, Integer gender) {
     this.userId = userId;
     this.name = name;
@@ -21,6 +34,11 @@ public class User {
     this.gender = gender;
   }
 
+  /**
+  * Initialize the User.
+  * @param rs
+  * @return User
+  */
   public User(ResultSet rs) {
     try {
       this.userId = rs.getInt("user_id");
@@ -34,6 +52,10 @@ public class User {
     }
   }
 
+  /**
+  * If the user is valid. 
+  * @return boolean
+  */
   public boolean isNotNull() {
     return this.userId != null;
   }

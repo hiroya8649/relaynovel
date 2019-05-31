@@ -9,13 +9,23 @@ import relaynovel.controller.UserController;
 import relaynovel.controller.ViewController;
 import relaynovel.model.User;
 
+/**
+* RegisterView is the view to let the user register.
+* @author  Chang
+*/
 public class RegisterView extends View {
+  /**
+   * constructor
+   */
   public RegisterView() {
     super();
     this.title = "ユーザー登録";
     this.message = "資料を入力してください";
   }
 
+  /**
+   * Handle the user input.
+   */
   public void main() {
     Scanner scanner = new Scanner(System.in);
     SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
@@ -51,7 +61,7 @@ public class RegisterView extends View {
     User user = new User(null, username, password, birthday, Integer.parseInt(genderStr));
     UserController.getInstance().insert(user);
 
-    View view = new LoginView();
+    View view = new LoginView(new MainMenuView());
     ViewController.getInstance().switchView(view);
   }
 }

@@ -1,5 +1,3 @@
-package relaynovel;
-
 import relaynovel.controller.*;
 import relaynovel.util.DBAdapter;
 

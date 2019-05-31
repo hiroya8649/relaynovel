@@ -4,7 +4,13 @@ import java.util.Scanner;
 
 import relaynovel.controller.ViewController;
 
+/**
+ * MainMenuView is the main menu.
+ */
 public class MainMenuView extends View {
+  /**
+   * constructor.
+   */
   public MainMenuView() {
     super();
     this.title = "メニュー";
@@ -12,6 +18,9 @@ public class MainMenuView extends View {
     this.inputDescription = "N: 小説一覧\nR: ユーザー登録\nE: 終了";
   }
 
+  /**
+   * Handle the user input.
+   */
   public void main() {
     Scanner scanner = new Scanner(System.in);
     boolean inputIsValid;
@@ -22,7 +31,7 @@ public class MainMenuView extends View {
       View view;
       switch (inputString) {
         case "N":
-            view = new LoginView();
+            view = NovelListView.openNovelList(null);
             ViewController.getInstance().switchView(view);
           break;
         case "R":

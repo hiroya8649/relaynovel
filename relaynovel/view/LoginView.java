@@ -6,16 +6,31 @@ import relaynovel.controller.UserController;
 import relaynovel.controller.ViewController;
 import relaynovel.model.User;
 
+/**
+* RegisterView is the view to let the user register.
+* @author  Chang
+*/
 public class LoginView extends View {
-  public LoginView() {
+  public User user;
+  private View parentView;
+
+  /**
+   * constructor
+   * @param parentView The next view after login.
+   */
+  public LoginView(View parentView) {
     super();
+    this.parentView = parentView;
+    this.user = null;
     this.title = "ログイン";
     this.message = "ユーザー名とパスワードを入力してください";
   }
 
+  /**
+   * Handle the user input.
+   */
   public void main() {
     Scanner scanner = new Scanner(System.in);
-    User user;
 
     // Loginを試す
     int loginTryLimit = 3;
@@ -34,18 +49,14 @@ public class LoginView extends View {
       System.out.println("Enterを押して、次の画面に移動します。");
       System.out.print("> ");
       scanner.nextLine();
-      View view = new MainMenuView();
-      ViewController.getInstance().switchView(view);
+      ViewController.getInstance().switchView(parentView);
     } else {
       // Login失敗
       System.out.println("Login三回失敗しました");
       System.out.println("Enterを押して、メニュー画面に移動します。");
       System.out.print("> ");
       scanner.nextLine();
-      View view = new MainMenuView();
-      ViewController.getInstance().switchView(view);
-
+      ViewController.getInstance().switchView(new MainMenuView());
     }
-
   }
 }
