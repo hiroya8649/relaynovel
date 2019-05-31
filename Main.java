@@ -3,7 +3,10 @@ import relaynovel.util.DBAdapter;
 
 public class Main {
   public static void main(String[] args) {
-    ViewController.getInstance().run();
-    DBAdapter.getInstance().closeConnection();
+    try {
+      ViewController.getInstance().run();
+    } finally {
+      DBAdapter.getInstance().closeConnection();
+    }
   }
 }
