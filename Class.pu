@@ -95,32 +95,86 @@ class MainMenuView view {
 }
 
 class NovelListView view {
-  + constructor()
+  + constructor(int page, String s, User user)
   + void main()
+  + static View openNovelList(User user)
+  - static View changePage(int page, User user)
+  - static String formatNovelTitles(ArrayList<Novel>novels, int page)
+  - static String repeat(String s, int rep)
+  - void registerNovel()
+  - void login()
+  - void register()
+  - static final int NOVELS_PER_PAGE = 10
+  - int page
+  - LoginView lv
+  - User user
+  - Boolean registering
+
 }
 
 class NovelView view {
-  + constructor()
+  - constructor(int novelId, int page, String s, View view, User user)
   + void main()
+  + static View openNovel(int novelId, View parentView, User user)
+  - static View changePage(int novelId, int page, View view, User user)
+  - static String formatTexts(ArrayList<Text> texts, int page)
+  - void writeText()
+  - void login()
+  - void write()
+  - Novel novel
+  - int page
+  - View parentView
+  - static final int TEXTS_PER_PAGE = 20
+  - LoginView lv
+  - User user
+  - Boolean writing
 }
 
 class ReviewNovelView view {
-  + constructor()
+  - constructor(int novelId, int page, String s, View view, User user)
   + void main()
+  - static View changePage(int novelId, int page, View view, User user)
+  - static String formatReviews(ArrayList<ReviewNovel> reviews, int page)
+  - void writeReview()
+  - void login()
+  - void review()
+  - Novel novel
+  - int page
+  - View parentView
+  - static final int REVIEWS_PER_PAGE = 20
+  - LoginView lv
+  - User user
+  - Boolean reviewing
 }
 
 class TextDetailView view {
-  + constructor()
+  + constructor(int novelId, int textId, int page , String s, View view, User user)
   + void main()
-}
-
-class NovelWriterView view {
-  + constructor()
-  + void main()
+  + static View openTextDetail(int novelId, int textId, View parentView, User user)
+  - static View changePage(int novelId, int textId, int page, View view, User user)
+  - static String formatReviews(ArrayList<ReviewText> reviews, int page)
+  - void writeReview()
+  - void login()
+  - void review()
+  - Novel novel
+  - Text text
+  - int page
+  - View parentView
+  - static final int REVIEWS_PER_PAGE = 20
+  - LoginView lv
+  - User user
+  - Boolean reviewingß
 }
 
 class LoginView view {
-  + constructor()
+  + constructor(View parentView)
+  + void main()
+  + User user
+  - View parentView
+}
+
+class JoinedUserListView view {
+  + JoinedUserListView(int novelId)
   + void main()
 }
 
@@ -215,8 +269,8 @@ View <|-left- LoginView
 View <|-left- MainMenuView
 View <|-left- NovelListView
 View <|-right- NovelView
-View <|-right- NovelWriterView
 View <|-right- ReviewNovelView
 View <|-right- TextDetailView
+View <|-right- JoinedUserListView
 
 @enduml
